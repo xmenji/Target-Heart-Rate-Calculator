@@ -1,11 +1,15 @@
 
 package targetheartratecalc;
-import java.util.Scanner;
+
+import java.time.Year;
+
 /**
  *
  * @author Titan
  */
 public class HeartRates {
+    
+    public static final int CURRENT_YEAR = Year.now().getValue();
     private String firstName,
             lastName,
             birthMonth;
@@ -56,16 +60,7 @@ public class HeartRates {
     }
     
     public int getAge(){
-        
-        Scanner input = new Scanner(System.in);
-        int currentYear, age;
-        
-        System.out.print("Enter current year: ");
-        currentYear = input.nextInt();
-        
-        age = currentYear - this.birthYear;
-        
-        return age;
+        return CURRENT_YEAR - this.birthYear; 
     }
    
     public int getMaxHeartRate(int age){
@@ -79,7 +74,7 @@ public class HeartRates {
                 highRange = (int) (maxHeartRate * 0.80);
         
         range = this.getFirstName() + "'s Target Heart Range: " + 
-                lowRange + "% - " + highRange + "%.";
+                lowRange + " - " + highRange + ".";
         
         return range;
     }
